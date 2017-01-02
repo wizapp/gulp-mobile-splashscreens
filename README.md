@@ -10,7 +10,7 @@ const gulp = require('gulp');
 const mobileSplashscreens = require('gulp-mobile-splashscreens');
 
 gulp.task('default', [], function() {
-    gulp.src('icon.svg')
+    gulp.src('splashscreen.svg')
         .pipe(mobileSplashscreens())
         .pipe(gulp.dest('images'));
 });
