@@ -60,7 +60,7 @@ const transform = (sizes, imageTransform) => function(file, encoding, callback) 
 	}
 
 	const promises = Object.keys(sizes).map(name => {
-		const options = Object.assign({}, SIZES[name], { backgroundColor: 'white' });
+		const options = Object.assign({}, SIZES[name]);
 		return imageTransform(new Buffer(file.contents), options)
 			.then(png => {
 				const result = new gutil.File({

@@ -3,7 +3,7 @@
   "description": "Gulp plugin that creates PNG splashscreens for iOS based on a SVG image",
   "dependencies": {
     "gulp-util": "^3.0.7",
-    "svg2png": "https://github.com/Collaborne/svg2png.git#master",
+    "svg2png": "^4.1.1",
     "through2": "^2.0.3"
   },
   "devDependencies": {

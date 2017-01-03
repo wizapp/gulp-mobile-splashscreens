@@ -47,6 +47,27 @@ Add the following to your `config.xml` to use the icons in a Cordova/PhoneGap ap
 </platform>
 ```
 
+## FAQ
+
+### Q: Why does iOS add a black background behind my splashscreen?
+
+If you use a SVG with a transparent background, the `gulp-mobile-splashscreens`
+will create splashscreens with transparent background. iOS always adds a black
+background to those transparent splashscreens.
+
+You need to add to your SVG a background if you want to have another color. It's important that the background area stretches beyond the image itself because `gulp-mobile-splashscreens` will otherwise add transparent areas around
+the image to fill the target size of each splashscreen.
+
+For example, this adds a red background to your splashscreens:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="667px" viewBox="0 0 375 667" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <rect fill="red" width="10000" height="10000" transform="translate(-5000, -5000)"/>
+    <!-- Your image -->
+</svg>
+```
+
 ## Credits
 
 Sample icon made by [Freepik](http://www.freepik.com) from [www.flaticon.com](http://www.flaticon.com) is licensed by [Creative Commons BY 3.0](http://creativecommons.org/licenses/by/3.0/)
