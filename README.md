@@ -47,6 +47,21 @@ Add the following to your `config.xml` to use the icons in a Cordova/PhoneGap ap
     <splash src="images/ios-768-portrait.png"        width="768"  height="1024"/>
     <splash src="images/ios-768-landscape.png"       width="1024" height="768"/>
 </platform>
+
+<platform name="android">
+    <splash src="images/android-ldpi-portrait.png"     density="port-ldpi"/>
+    <splash src="images/android-ldpi-landscape.png"    density="land-ldpi"/>
+    <splash src="images/android-mdpi-portrait.png"     density="port-mdpi"/>
+    <splash src="images/android-mdpi-landscape.png"    density="land-mdpi"/>
+    <splash src="images/android-hdpi-portrait.png"     density="port-hdpi"/>
+    <splash src="images/android-hdpi-landscape.png"    density="land-hdpi"/>
+    <splash src="images/android-xhdpi-portrait.png"    density="port-xhdpi"/>
+    <splash src="images/android-xhdpi-landscape.png"   density="land-xhdpi"/>
+    <splash src="images/android-xxhdpi-portrait.png"   density="port-xxhdpi"/>
+    <splash src="images/android-xxhdpi-landscape.png"  density="land-xxhdpi"/>
+    <splash src="images/android-xxxhdpi-portrait.png"  density="port-xxxhdpi"/>
+    <splash src="images/android-xxxhdpi-landscape.png" density="land-xxxhdpi"/>
+</platform>
 ```
 
 ## FAQ
