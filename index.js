@@ -16,10 +16,18 @@ const SIZES = {
 	// References:
 	// - https://developer.apple.com/ios/human-interface-guidelines/graphics/launch-screen/ (canonical source, but usually only for the most recent iOS version)
 	// - https://github.com/phonegap/phonegap/wiki/App-Splash-Screen-Sizes
+	// 10.5-inch iPad Pro
+	'ios-1668-portrait'         : { width: 1668, height: 2224 },
+	'ios-1668-landscape'        : { width: 2224, height: 1668 },
+
+	// iPhone X
+	'ios-1125-portrait'         : { width: 1125, height: 2436 },
+	'ios-1125-landscape'        : { width: 2436, height: 1125 },
+	
 	// iPhone 6s Plus, iPhone 6 Plus
 	'ios-1080-portrait'         : { width: 1080, height: 1920 },
 	'ios-1080-landscape'        : { width: 1920, height: 1080 },
-
+	
 	// iPhone 6s, iPhone 6
 	'ios-750-portrait'          : { width:  750, height: 1334 },
 	'ios-750-landscape'         : { width: 1334, height:  750 },
