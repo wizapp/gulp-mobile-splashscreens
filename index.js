@@ -12,7 +12,7 @@ const PLUGIN_NAME = 'gulp-mobile-splashscreens';
 /**
  * List of all sizes for which PNGs need to be created
  */
-const SIZES = {
+const ios_SIZES = {
 	// References:
 	// - https://developer.apple.com/ios/human-interface-guidelines/graphics/launch-screen/ (canonical source, but usually only for the most recent iOS version)
 	// - https://github.com/phonegap/phonegap/wiki/App-Splash-Screen-Sizes
@@ -59,7 +59,9 @@ const SIZES = {
 	// iPad non-retina
 	'ios-768-portrait'          : { width:  768, height: 1024 },
 	'ios-768-landscape'         : { width: 1024, height:  768 },
+};
 
+const android_SIZES = {
 	// Android references: https://github.com/phonegap/phonegap/wiki/App-Splash-Screen-Sizes
 
 	// Android LDPI
@@ -87,14 +89,27 @@ const SIZES = {
 	'android-xxxhdpi-landscape' : { width: 1920, height: 1280 },
 };
 
-const transform = (sizes, imageTransform) => function(file, encoding, callback) {
+const transform = (platform, imageTransform) => function(file, encoding, callback) {
 	if (file.isStream()) {
 		this.emit('error', new PluginError(PLUGIN_NAME, 'Streams are not supported!'));
 		return callback();
 	}
+	
+	let sizes;
+	switch (platform) {
+		case 'ios':
+			sizes = ios_SIZES;
+			break;
+		case 'android':
+			sizes = android_SIZES;
+			break;
+		default:
+			this.emit('error', new PluginError(PLUGIN_NAME, `Platform '${platform}' not supported!`));
+			return callback();
+	}
 
 	const promises = Object.keys(sizes).map(name => {
-		const options = Object.assign({}, SIZES[name]);
+		const options = Object.assign({}, sizes[name]);
 		return imageTransform(new Buffer(file.contents), options)
 			.then(png => {
 				const result = new gutil.File({
@@ -116,10 +131,10 @@ const transform = (sizes, imageTransform) => function(file, encoding, callback) 
 
 /**
  * Creates mobile icons
- * @param  {Object} [sizes=SIZES]            For testing: reduce number of sizes
+ * @param  {Object} [platform]                 ios or android
  * @param  {Function} [imageTransform=svg2png] For testing: avoid expensive calls to svg2png
  * @return {Stream}
  */
-module.exports = function(sizes = SIZES, imageTransform = svg2png) {
-	return through.obj(transform(sizes, imageTransform));
+module.exports = function(platform, imageTransform = svg2png) {
+	return through.obj(transform(platform, imageTransform));
 };
